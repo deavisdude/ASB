@@ -79,7 +79,7 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void Highlight()
     {
-        if (GetComponent<Image>().sprite == tile)
+        if (GetComponent<Image>().sprite == tile && board.name == "Board")
             GetComponent<Image>().sprite = yellowTile;
         else
         {
@@ -87,12 +87,28 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         }
     }
 
+    public void SetColor(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                GetComponent<Image>().sprite = tile;
+                break;
+            case 1:
+                GetComponent<Image>().sprite = yellowTile;
+                break;
+            case 2:
+                GetComponent<Image>().sprite = greenTile;
+                break;
+        }
+
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (activated) {
-            GetComponent<Image>().sprite = greenTile;
+            SetColor(2);
         }
     }
 }
