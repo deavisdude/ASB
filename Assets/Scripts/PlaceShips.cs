@@ -4,19 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class PlaceShips : MonoBehaviour
 {
-    public Sprite yellowTile, tile, greenTile;
-    int x, y;
     Image image;
     public GameObject board;
     List<GameObject> cells = new List<GameObject>();
-    List<GameObject> adjacentCells = new List<GameObject>();
-    int direction;
+    public List<GameObject> adjacentCells = new List<GameObject>();
+    public int direction;
     //public GameObject carrier, battleship, cruiser, submarine, destroyer;
     //GameObject[] ships;
-    static int placing, size;
-    bool activated = false;
+    public int placing, size;
 
     void Start()
     {
@@ -24,20 +21,9 @@ public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         size = 5;
         placing = 1;
         image = GetComponent<Image>();
-        for (int i = 0; i < board.transform.childCount; i++)
+        for(int i=0; i<board.transform.GetChildCount(); i++)
         {
             cells.Add(board.transform.GetChild(i).gameObject);
-        }
-        int index = cells.IndexOf(gameObject);
-        if (index < 10) 
-        { 
-            x = index + 1;
-            y = 10; 
-        }
-        else
-        {
-            y = 10 - (Mathf.FloorToInt(index / 10));
-            x = (index % 10) + 1;
         }
     }
 
@@ -51,13 +37,6 @@ public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             placing = -1;
         }
 
-        foreach (GameObject cell in cells)
-        {
-            if (activated)
-            {
-                image.sprite = greenTile;
-            }
-        }
         switch (placing)
         {
             case 1:
@@ -78,97 +57,32 @@ public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void ClearCells()
     {
-        if (eventData.button == PointerEventData.InputButton.Right)//If we right click, let's try rotating again
+        foreach (GameObject cell in adjacentCells)
         {
-            OnPointerExit(null);
-            if (direction == 3)
-            {
-                TryRight();
-            }
-            else
-            {
-                int i = direction + 1;
-                switch (i)
-                {
-                    case 1:
-                        TryDown();
-                        break;
-                    case 2:
-                        TryLeft();
-                        break;
-                    case 3:
-                        TryUp();
-                        break;
-                }
-            }
-        }else if(eventData.button == PointerEventData.InputButton.Left)
-        {
-            switch (placing)
-            {
-                case 1:
-                    foreach(GameObject cell in adjacentCells)
-                    {
-                        cell.GetComponent<PlaceShips>().activated = true;
-                    }
-                    placing = 2;
-                    break;
-                case 2:
-                    foreach (GameObject cell in adjacentCells)
-                    {
-                        cell.GetComponent<PlaceShips>().activated = true;
-                    }
-                    placing = 3;
-                    break;
-                case 3:
-                    foreach (GameObject cell in adjacentCells)
-                    {
-                        cell.GetComponent<PlaceShips>().activated = true;
-                    }
-                    placing = 4;
-                    break;
-                case 4:
-                    foreach (GameObject cell in adjacentCells)
-                    {
-                        cell.GetComponent<PlaceShips>().activated = true;
-                    }
-                    placing = 5;
-                    break;
-                case 5:
-                    foreach (GameObject cell in adjacentCells)
-                    {
-                        cell.GetComponent<PlaceShips>().activated = true;
-                    }
-                    placing = 0;
-                    break;
-            }
+            if (cell != null)
+                cell.GetComponent<Cell>().Highlight();
         }
+        adjacentCells = new List<GameObject>();
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if(placing != 0)
-            TryRight();
-    }
-
-
-    bool TryRight()
+    public bool TryRight(int x, int y)
     {
         int count = 0, tx = x, ty = y;
         while (count < size)
         {
             GameObject go = FindCellXY(tx, ty);
-            if (go != null)
+            if (go != null && !go.GetComponent<Cell>().activated)
             {
                 adjacentCells.Add(go);
-                go.GetComponent<PlaceShips>().Highlight();
+                go.GetComponent<Cell>().Highlight();
                 tx++;
             }
             else
             {
-                OnPointerExit(null);
-                TryDown();
+                ClearCells();
+                TryDown(x,y);
                 return false;
             }
             count++;
@@ -177,22 +91,22 @@ public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         return true;
     }
 
-    bool TryDown()
+    public bool TryDown(int x, int y)
     {
         int count = 0, tx = x, ty = y;
         while (count < size)
         {
             GameObject go = FindCellXY(tx, ty);
-            if (go != null)
+            if (go != null && !go.GetComponent<Cell>().activated)
             {
                 adjacentCells.Add(go);
-                go.GetComponent<PlaceShips>().Highlight();
+                go.GetComponent<Cell>().Highlight();
                 ty--;
             }
             else
             {
-                OnPointerExit(null);
-                TryLeft();
+                ClearCells();
+                TryLeft(x,y);
                 return false;
             }
             count++;
@@ -201,22 +115,22 @@ public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         return true;
     }
 
-    bool TryLeft()
+    public bool TryLeft(int x, int y)
     {
         int count = 0, tx = x, ty = y;
         while (count < size)
         {
             GameObject go = FindCellXY(tx, ty);
-            if (go != null)
+            if (go != null && !go.GetComponent<Cell>().activated)
             {
                 adjacentCells.Add(go);
-                go.GetComponent<PlaceShips>().Highlight();
+                go.GetComponent<Cell>().Highlight();
                 tx--;
             }
             else
             {
-                OnPointerExit(null);
-                TryUp();
+                ClearCells();
+                TryUp(x,y);
                 return false;
             }
             count++;
@@ -225,22 +139,22 @@ public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         return true;
     }
 
-    bool TryUp()
+    public bool TryUp(int x, int y)
     {
         int count = 0, tx = x, ty = y;
         while (count < size)
         {
             GameObject go = FindCellXY(tx, ty);
-            if (go != null)
+            if (go != null && !go.GetComponent<Cell>().activated)
             {
                 adjacentCells.Add(go);
-                go.GetComponent<PlaceShips>().Highlight();
+                go.GetComponent<Cell>().Highlight();
                 ty++;
             }
             else
             {
-                OnPointerExit(null);
-                TryRight();
+                ClearCells();
+                TryRight(x,y);
                 return false;
             }
             count++;
@@ -249,36 +163,58 @@ public class PlaceShips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         return true;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        foreach(GameObject cell in adjacentCells)
-        {
-            if(cell != null)
-                cell.GetComponent<PlaceShips>().Highlight();
-        }
-        adjacentCells = new List<GameObject>();
-    }
+
 
     public GameObject FindCellXY(int x, int y)
     {
         foreach(GameObject cell in cells)
         {
-            if (cell.GetComponent<PlaceShips>().x == x && cell.GetComponent<PlaceShips>().y == y)
+            if (cell.GetComponent<Cell>().x == x && cell.GetComponent<Cell>().y == y)
                 return cell;
         }
         return null;
     }
 
-    public void Highlight()
+    public void LClick()
     {
-            if (image.sprite == tile)
-                image.sprite = yellowTile;
-            else
-            {
-                image.sprite = tile;
-            }
+        switch (placing)
+        {
+            case 1:
+                foreach (GameObject cell in adjacentCells)
+                {
+                    cell.GetComponent<Cell>().activated = true;
+                }
+                placing = 2;
+                break;
+            case 2:
+                foreach (GameObject cell in adjacentCells)
+                {
+                    cell.GetComponent<Cell>().activated = true;
+                }
+                placing = 3;
+                break;
+            case 3:
+                foreach (GameObject cell in adjacentCells)
+                {
+                    cell.GetComponent<Cell>().activated = true;
+                }
+                placing = 4;
+                break;
+            case 4:
+                foreach (GameObject cell in adjacentCells)
+                {
+                    cell.GetComponent<Cell>().activated = true;
+                }
+                placing = 5;
+                break;
+            case 5:
+                foreach (GameObject cell in adjacentCells)
+                {
+                    cell.GetComponent<Cell>().activated = true;
+                }
+                placing = 0;
+                break;
         }
-
     }
 
 }
