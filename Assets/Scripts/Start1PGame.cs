@@ -7,6 +7,7 @@ public class Start1PGame : MonoBehaviour
     public GameObject[] objectsToToggle;
     public GameObject[] playerAssets;
     public GameObject[] AIAssets;
+    public GameObject switchButton;
 
     public GameObject[] Fleet;
     public GameObject AIBoard;
@@ -69,7 +70,7 @@ public class Start1PGame : MonoBehaviour
         }
     }
 
-    void SwitchTurns()
+    public void SwitchTurns()
     {
         foreach (GameObject o in playerAssets)
         {
@@ -79,11 +80,17 @@ public class Start1PGame : MonoBehaviour
         {
             o.active = !o.active;
         }
+        Cell.turnTaken = false;
     }
 
     void PopulateAIBoard()
     {
         SwitchTurns();
+        switchButton.active = true;
+        foreach(GameObject ship in Fleet)
+        {
+            ship.active = false;
+        }
         int shipNumber = 0;
         foreach (int[,] design in shipDesigns)
         {

@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Cell : MonoBehaviour { 
-
+public class Cell : MonoBehaviour, IPointerDownHandler{
     public Sprite yellowTile, tile, greenTile;
     public int x, y;
     public static List<GameObject> cells = new List<GameObject>();
@@ -14,7 +13,8 @@ public class Cell : MonoBehaviour {
     public GameObject AIBoard;
     public GameObject ship;
 
-
+    public static bool turnTaken = false;
+    
 
     public void Start()
     {
@@ -65,6 +65,22 @@ public class Cell : MonoBehaviour {
                 break;
         }
 
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (!turnTaken && AICells.Contains(gameObject) && GetComponent<Image>().sprite == tile)
+        {
+            if (ship)
+            {
+                SetColor(2);
+            }
+            else
+            {
+                SetColor(1);
+            }
+            turnTaken = true;
+        }
     }
 }
 
