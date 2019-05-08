@@ -10,6 +10,18 @@ public class Ship : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     Vector3 startPos;
     public GameObject fleet;
     List<GameObject> cellsOccupying = new List<GameObject>();
+    public bool placed = false;
+
+    void Update()
+    {
+        if (gameObject.Equals(Ship.shipBeingDragged))
+        {
+            if(Input.GetKeyDown(KeyCode.LeftArrow))
+                transform.Rotate(0f, 0f, 90f);
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                transform.Rotate(0f, 0f, -90f);
+        }
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     { 
@@ -43,6 +55,10 @@ public class Ship : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 cell.GetComponent<Cell>().SetColor(0);
             }
             cellsOccupying.Clear();
+        }
+        else
+        {
+            placed = true;
         }
 
     }
