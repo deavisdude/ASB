@@ -8,27 +8,32 @@ public class Cell : MonoBehaviour {
 
     public Sprite yellowTile, tile, greenTile;
     public int x, y;
-    List<GameObject> cells = new List<GameObject>();
+    public static List<GameObject> cells = new List<GameObject>();
     public GameObject board;
+    public GameObject ship;
+
+
 
     private void Start()
     {
+        if (cells.Count < 1)
+        {
+            for (int i = 0; i < board.transform.childCount; i++)
+            {
+                cells.Add(board.transform.GetChild(i).gameObject);
+            }
 
-        for (int i = 0; i < board.transform.childCount; i++)
-        {
-            cells.Add(board.transform.GetChild(i).gameObject);
-        }
-
-        int index = cells.IndexOf(gameObject);
-        if (index < 15)
-        {
-            x = index + 1;
-            y = 15;
-        }
-        else
-        {
-            y = 15 - (Mathf.FloorToInt(index / 15));
-            x = (index % 15) + 1;
+            int index = cells.IndexOf(gameObject);
+            if (index < 15)
+            {
+                x = index + 1;
+                y = 15;
+            }
+            else
+            {
+                y = 15 - (Mathf.FloorToInt(index / 15));
+                x = (index % 15) + 1;
+            }
         }
     }
 
@@ -49,6 +54,5 @@ public class Cell : MonoBehaviour {
         }
 
     }
-
 }
 
