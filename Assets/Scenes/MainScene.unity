@@ -7751,6 +7751,8 @@ GameObject:
   - component: {fileID: 725289459}
   - component: {fileID: 725289461}
   - component: {fileID: 725289460}
+  - component: {fileID: 725289463}
+  - component: {fileID: 725289462}
   m_Layer: 5
   m_Name: Ship-S
   m_TagString: Untagged
@@ -7814,6 +7816,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725289458}
   m_CullTransparentMesh: 0
+--- !u!114 &725289462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725289458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fde3f88bc73476f905d5489bed88e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells: []
+  fleet: {fileID: 0}
+--- !u!225 &725289463
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725289458}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &735377006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9092,6 +9120,8 @@ GameObject:
   - component: {fileID: 794050143}
   - component: {fileID: 794050145}
   - component: {fileID: 794050144}
+  - component: {fileID: 794050147}
+  - component: {fileID: 794050146}
   m_Layer: 5
   m_Name: Ship-J
   m_TagString: Untagged
@@ -9155,6 +9185,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794050142}
   m_CullTransparentMesh: 0
+--- !u!114 &794050146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794050142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fde3f88bc73476f905d5489bed88e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells: []
+  fleet: {fileID: 0}
+--- !u!225 &794050147
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794050142}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &809900557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14688,6 +14744,8 @@ GameObject:
   - component: {fileID: 1421956717}
   - component: {fileID: 1421956719}
   - component: {fileID: 1421956718}
+  - component: {fileID: 1421956721}
+  - component: {fileID: 1421956720}
   m_Layer: 5
   m_Name: Ship-O
   m_TagString: Untagged
@@ -14751,6 +14809,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421956716}
   m_CullTransparentMesh: 0
+--- !u!114 &1421956720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421956716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fde3f88bc73476f905d5489bed88e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells: []
+  fleet: {fileID: 0}
+--- !u!225 &1421956721
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421956716}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &1426613482 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2702491999327434314, guid: d010fd4e6b96741828aabcafe0c21729,
@@ -16892,6 +16976,8 @@ GameObject:
   - component: {fileID: 1601435157}
   - component: {fileID: 1601435159}
   - component: {fileID: 1601435158}
+  - component: {fileID: 1601435161}
+  - component: {fileID: 1601435160}
   m_Layer: 5
   m_Name: Ship-T
   m_TagString: Untagged
@@ -16955,6 +17041,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601435156}
   m_CullTransparentMesh: 0
+--- !u!114 &1601435160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601435156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fde3f88bc73476f905d5489bed88e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells: []
+  fleet: {fileID: 0}
+--- !u!225 &1601435161
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601435156}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &1605659190 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2702491999327434314, guid: d010fd4e6b96741828aabcafe0c21729,
@@ -17246,6 +17358,8 @@ GameObject:
   - component: {fileID: 1638303659}
   - component: {fileID: 1638303661}
   - component: {fileID: 1638303660}
+  - component: {fileID: 1638303663}
+  - component: {fileID: 1638303662}
   m_Layer: 5
   m_Name: Ship-Z
   m_TagString: Untagged
@@ -17309,6 +17423,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638303658}
   m_CullTransparentMesh: 0
+--- !u!114 &1638303662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638303658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fde3f88bc73476f905d5489bed88e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells: []
+  fleet: {fileID: 0}
+--- !u!225 &1638303663
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638303658}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &1641098563 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2702491999327434314, guid: d010fd4e6b96741828aabcafe0c21729,
@@ -17612,6 +17752,8 @@ GameObject:
   - component: {fileID: 1676952860}
   - component: {fileID: 1676952862}
   - component: {fileID: 1676952861}
+  - component: {fileID: 1676952864}
+  - component: {fileID: 1676952863}
   m_Layer: 5
   m_Name: Ship-I
   m_TagString: Untagged
@@ -17675,6 +17817,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676952859}
   m_CullTransparentMesh: 0
+--- !u!114 &1676952863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676952859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fde3f88bc73476f905d5489bed88e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells: []
+  fleet: {fileID: 0}
+--- !u!225 &1676952864
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676952859}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1677726986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20483,6 +20651,8 @@ GameObject:
   - component: {fileID: 1932903451}
   - component: {fileID: 1932903453}
   - component: {fileID: 1932903452}
+  - component: {fileID: 1932903455}
+  - component: {fileID: 1932903454}
   m_Layer: 5
   m_Name: Ship-L
   m_TagString: Untagged
@@ -20546,6 +20716,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932903450}
   m_CullTransparentMesh: 0
+--- !u!114 &1932903454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932903450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fde3f88bc73476f905d5489bed88e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells: []
+  fleet: {fileID: 0}
+--- !u!225 &1932903455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932903450}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &1933269910 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2702491999327434314, guid: d010fd4e6b96741828aabcafe0c21729,
