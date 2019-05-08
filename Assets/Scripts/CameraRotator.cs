@@ -5,27 +5,29 @@ using UnityEngine;
 public class CameraRotator : MonoBehaviour
 {
     public float target;
-    float speed = 16f;
-    public bool activated = false;
     public float targetHeight = 20f;
-    float moveSpeed = 4f;
 
-    void FixedUpdate()
+    public void Activate()
     {
-        if(activated && transform.position.y < targetHeight)
-        {
-            float x = moveSpeed * Time.fixedDeltaTime;
-            transform.Translate(0f,moveSpeed*Time.fixedDeltaTime,0f);
-        }
+        StartCoroutine(Rotate());
+        StartCoroutine(Move());
+    }
 
-        if (activated && transform.eulerAngles.x < target) { 
-            float angle = speed * Time.fixedDeltaTime;
-            transform.Rotate(Vector3.right, angle);
-        }
-
-        if(activated && transform.position.y >= targetHeight && transform.eulerAngles.x >= (target - 1d))
+    IEnumerator Move()
+    {
+        for(float f=0f; f<targetHeight; f+= 0.1f)
         {
-            activated = false;
+            transform.Translate(0f, 0.1f, 0f);
+            yield return null;
+        }
+    }
+
+    IEnumerator Rotate()
+    {
+        for (float f = 0f; f <= target; f += 0.4f)
+        {
+            transform.Rotate(Vector3.right, 0.4f);
+            yield return null;
         }
     }
 }
