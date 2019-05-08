@@ -6,10 +6,9 @@ using UnityEngine.EventSystems;
 public class Ship : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public static GameObject shipBeingDragged;
-    int size = 4;
-    Vector3 startPos;
-    public GameObject fleet;
-    List<GameObject> cellsOccupying = new List<GameObject>();
+    public int size = 4;
+    public Vector3 startPos;
+    public List<GameObject> cellsOccupying = new List<GameObject>();
     public bool placed = false;
 
     void Update()
