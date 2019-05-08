@@ -118,9 +118,11 @@ MonoBehaviour:
   yellowTile: {fileID: 21300000, guid: 0779c8f1637784625a8d59966181c2d8, type: 3}
   tile: {fileID: 21300000, guid: 4e200d54b350240848424ac4fe30df78, type: 3}
   greenTile: {fileID: 21300000, guid: 54adfd09ccb98466cb3ee936274b76de, type: 3}
+  blackTile: {fileID: 21300000, guid: 1f023fe2a576b4dd09774bd4b73ef0fd, type: 3}
   x: 0
   y: 0
   board: {fileID: 0}
+  AIBoard: {fileID: 0}
   ship: {fileID: 0}
 --- !u!50 &4885355002136844079
 Rigidbody2D:

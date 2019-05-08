@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Cell : MonoBehaviour, IPointerDownHandler{
-    public Sprite yellowTile, tile, greenTile;
+    public Sprite yellowTile, tile, greenTile, blackTile;
     public int x, y;
     public static List<GameObject> cells = new List<GameObject>();
     public static List<GameObject> AICells = new List<GameObject>();
@@ -63,6 +63,9 @@ public class Cell : MonoBehaviour, IPointerDownHandler{
             case 2:
                 GetComponent<Image>().sprite = greenTile;
                 break;
+            case 3:
+                GetComponent<Image>().sprite = blackTile;
+                break;
         }
 
     }
@@ -80,6 +83,19 @@ public class Cell : MonoBehaviour, IPointerDownHandler{
                 SetColor(1);
             }
             turnTaken = true;
+            Cell target = cells[Random.Range(0, 149)].GetComponent<Cell>();
+            while(!target.GetComponent<Image>().sprite == yellowTile && !target.GetComponent<Image>().sprite == blackTile)
+            {
+                target = cells[Random.Range(0, 149)].GetComponent<Cell>();
+            }
+            if (target.ship)
+            {
+                target.SetColor(3);
+            }
+            else
+            {
+                target.SetColor(1);
+            }
         }
     }
 }
