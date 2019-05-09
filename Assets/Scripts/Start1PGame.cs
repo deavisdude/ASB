@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Start1PGame : MonoBehaviour
 {
+    public GameObject playerWinText, AIWinText;
     public GameObject[] objectsToToggle;
     public GameObject[] playerAssets;
     public GameObject[] AIAssets;
@@ -67,6 +68,32 @@ public class Start1PGame : MonoBehaviour
             placed = true;
             PopulateAIBoard();
             smallSafadi.active = false;
+        }
+
+        int playerCellsHit = 0;
+        foreach(GameObject c in Cell.cells)
+        {
+            Cell cell = c.GetComponent<Cell>();
+            if(cell.color == 3)
+            {
+                playerCellsHit++;
+            }
+        }
+        if(playerCellsHit == 28)
+        {
+            AIWinText.active = true;
+        }
+
+        int AICellsHit = 0;
+        foreach(GameObject c in Cell.AICells)
+        {
+            Cell cell = c.GetComponent<Cell>();
+            if (cell.color == 2)
+                AICellsHit++;
+        }
+        if(AICellsHit == 28)
+        {
+            playerWinText.active = true;
         }
     }
 

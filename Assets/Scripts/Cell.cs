@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Cell : MonoBehaviour, IPointerDownHandler{
+    public int color = 0;
     public Sprite yellowTile, tile, greenTile, blackTile;
     public int x, y;
     public static List<GameObject> cells = new List<GameObject>();
@@ -56,15 +57,19 @@ public class Cell : MonoBehaviour, IPointerDownHandler{
         {
             case 0:
                 GetComponent<Image>().sprite = tile;
+                color = 0;
                 break;
             case 1:
                 GetComponent<Image>().sprite = yellowTile;
+                color = 1;
                 break;
             case 2:
                 GetComponent<Image>().sprite = greenTile;
+                color = 2;
                 break;
             case 3:
                 GetComponent<Image>().sprite = blackTile;
+                color = 3;
                 break;
         }
 
